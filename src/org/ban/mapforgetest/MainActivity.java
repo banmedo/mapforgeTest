@@ -5,6 +5,7 @@ import org.mapsforge.android.maps.MapView;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import java.io.File;
 
 public class MainActivity extends Activity {
 
@@ -12,18 +13,21 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+        
+        //initialise map view
 		MapView mapView = (MapView) findViewById(R.id.map);
-		mapView.setClickable(true);
+		
+        //set the map as clickable 
+        mapView.setClickable(true);
+        
+        //enable the zoom controls
 		mapView.setBuiltInZoomControls(true);
 		
+        //<----now we need to add map data to the map view
+      	// it should be
+        mapView.setMapFile(new File("pathname/filename.map")); 
+        
+        //this takes .map file as an argument
 		this.setContentView(mapView);
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
 }
